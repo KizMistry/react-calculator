@@ -1,0 +1,59 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(to right, #ff7f1e, #fbff1e);
+}
+
+.calculator-grid {
+    display: grid; /* makes the calculator a grid */
+    margin-top: 2rem; /* makes space at the top */
+    justify-content: center; /* places the grid in the center of the parent div */
+    grid-template-columns: repeat(4, 6rem); /* shapes the grid into 4 columns */
+    grid-template-rows: minmax(7rem, auto) repeat(5, 6rem); 
+    /* default is 7rem, auto allows for the row to expand when more numbers are entered and display in the output,
+    repeat then sets 5 rows at 6rem for remaining buttons */
+} 
+
+.calculator-grid > button {
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid white;
+    outline: none;
+    background-color: rgba(255, 255, 255, .75);
+}
+
+.calculator-grid > button:hover,
+.calculator-grid > button:focus {
+    background-color: rgba(255, 255, 255, .9);
+}
+
+.span-two {
+    grid-column: span 2; /* sets the buttons with this class to span 2 column widths */
+}
+
+.output {
+    grid-column: 1 / -1; /* means it will take up the entire top row */
+    background-color: rgba(0, 0, 0, .75); /* black background for ouptut */
+    display: flex;
+    flex-direction: column; /* vertically stacks the outputs */
+    align-items: flex-end; /* put the output at the end of the column */
+    justify-content: space-around; /* spaces out the outputs as much as possible */
+    padding: .75rem; /* padding around the output, adds more space to the edges */
+    word-wrap: break-word; /* allows the number to wrap to the next row when long output */
+    word-break: break-all;
+}
+
+.output .previous-operand {
+    color: rgba(255, 255, 255, .75);
+    font-size: 1.5rem;
+    /* slightly off white color and smaller size to display as previous output */
+}
+
+.output .current-operand {
+    color: rgb(255, 255, 255);
+    font-size: 2.5rem;
+    /* white font and larger to display as the main current output */
+}
